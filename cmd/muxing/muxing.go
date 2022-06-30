@@ -46,7 +46,7 @@ func handleData(writer http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Fprintf(writer, "I got message:\n %s", string(data))
+	fmt.Fprintf(writer, "I got message:\n%s", string(data))
 }
 
 func handleHeaders(writer http.ResponseWriter, request *http.Request) {
