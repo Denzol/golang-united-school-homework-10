@@ -50,17 +50,19 @@ func handleData(writer http.ResponseWriter, request *http.Request) {
 }
 
 func handleHeaders(writer http.ResponseWriter, request *http.Request) {
-	val1, err := strconv.Atoi(request.Header["a"][0])
+	a := request.Header.Get("a")
+	val1, err := strconv.Atoi(a)
 	if err != nil {
 		log.Fatal(err)
 	}
-	val2, err := strconv.Atoi(request.Header["b"][0])
+	b := request.Header.Get("b")
+	val2, err := strconv.Atoi(b)
 	if err != nil {
 		log.Fatal(err)
 	}
 	value := val1 + val2
-	b := strconv.Itoa(value)
-	writer.Header().Add("a+b", b)
+	res := strconv.Itoa(value)
+	writer.Header().Set("a+b", res)
 }
 
 //main /** starts program, gets HOST:PORT param and calls Start func.
